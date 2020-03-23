@@ -17,3 +17,4 @@
 
 import './squared_difference';
 import './broadcast_to';
+import './tile';
