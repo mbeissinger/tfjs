@@ -183,7 +183,6 @@ export interface OpHandler {
   oneHot(
       x: Tensor|TensorLike, depth: number, onValue?: number,
       offValue?: number): Tensor;
-  tile<T extends Tensor>(x: T, reps: number[]): T;
   gather<T extends Tensor>(x: T, indices: Tensor|TensorLike, axis: number): T;
   matMul<T extends Tensor>(
       a: T, b: T|TensorLike, transposeA: boolean, transposeB: boolean): T;
@@ -784,11 +783,6 @@ export class Tensor<R extends Rank = Rank> {
 
   // Below is chain API that is not exposed to docs to avoid repetition. To
   // expose a method, move it above this comment and add @doc and jsdoc.
-
-  tile<T extends this>(this: T, reps: number[]): T {
-    this.throwIfDisposed();
-    return opHandler.tile(this, reps);
-  }
 
   gather<T extends this>(this: T, indices: Tensor|TensorLike, axis = 0): T {
     this.throwIfDisposed();

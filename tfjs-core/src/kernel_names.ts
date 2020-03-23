@@ -47,6 +47,12 @@ export interface BroadCastToAttrs {
 export const Identity = 'Identity';
 export type IdentityInputs = Pick<NamedTensorInfoMap, 'x'>;
 
+export const Tile = 'Tile';
+export type TileInputs = Pick<NamedTensorInfoMap, 'x'>;
+export interface TileAttrs {
+  reps: number[];
+}
+
 /**
  * TensorFlow.js-only kernels
  */
